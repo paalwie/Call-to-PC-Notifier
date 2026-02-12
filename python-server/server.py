@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import winsound
 
 class CallHandler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -7,6 +8,10 @@ class CallHandler(BaseHTTPRequestHandler):
             data = self.rfile.read(length).decode()
 
             print("\n 📞 Eingehender Anruf!")
+            for _ in range(5): 
+                winsound.Beep(1000, 200)
+                winsound.Beep(1500, 200)
+                winsound.Beep(2000, 400)
             if data:
                 print("Daten: ", data)
 
